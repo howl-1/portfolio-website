@@ -1,0 +1,767 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #87cefa, #e0f7ff);
+    color: #000;
+}
+
+/* NAVBAR */
+.navbar {
+    %display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+/* SECTIONS */
+.section {
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* GLASS EFFECT */
+.glass {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 119, 255, 0.15);
+}
+
+.card {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+/* MOBILE VIEW RESPONSIVE */
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 12px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+        /* Chrome */
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
+/* EDUCATION LAYOUT */
+.edu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.edu-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.edu-card .percentage {
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    color: black;
+    /* default color */
+}
+
+.edu-card:hover .percentage {
+    color: #1e90ff;
+    /* glow color, can change */
+    text-shadow:
+        0 0 5px #1e90ff,
+        0 0 10px #1e90ff,
+        0 0 15px #1e90ff,
+        0 0 20px #1e90ff;
+}
+
+.edu-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    .edu-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .edu-card {
+        width: 30%;
+    }
+}
+
+/* HERO SECTION */
+.hero {
+    padding-top: 80px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 60%);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+}
+
+.hero-content h2 {
+    margin: 15px 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.highlight {
+    color: #0077ff;
+}
+
+.hero-content p {
+    max-width: 500px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    background: #0077ff;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #005fcc;
+}
+
+.secondary {
+    background: transparent;
+    border: 2px solid #0077ff;
+    color: #0077ff;
+}
+
+.secondary:hover {
+    background: #0077ff;
+    color: white;
+}
+
+.skills-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skill-card {
+    width: 350px;
+}
+
+.skill {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.skill span {
+    font-weight: 600;
+}
+
+.progress {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, #0077ff, #00c6ff);
+    border-radius: 10px;
+    transition: width 1s ease-in-out; /* Smooth fill */
+}
+
+.skill-desc {
+    font-size: 14px;
+    margin: 15px 0 25px 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Glow effect on hover */
+
+.glow-card {
+    transition: all 0.4s ease;
+}
+
+.glow-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        /*0 0 15px 0 0 40px rgba(0, 255, 255, 0.6),*/
+        0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.hobbies-wrapper.active {
+    box-shadow:
+        0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.skill-header i {
+    margin-right: 8px;
+    color: #00ffff;
+    transition: all 0.3s ease;
+}
+
+/* Glow only when glass is hovered */
+.glow-card:hover .skill-header i {
+    text-shadow: 0 0 12px #00ffff;
+    transform: scale(1.1);
+}
+
+.hobby-card {
+    background: transparent;
+    padding: 15px;
+    border-radius: 20px;
+    /* outline: 1px solid red; */
+}
+
+.hobby-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hobby-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    padding: 0;
+    /* remove padding-top from here */
+}
+
+/* Active state */
+.hobby-card.active .hobby-content {
+    max-height: 1000px;
+    padding-top: 15px;
+}
+
+.hobby-header h3 {
+    margin: 0;
+}
+
+.arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.hobby-card.active .arrow {
+    transform: rotate(180deg);
+}
+
+.image-container {
+    position: relative;
+    margin-top: 15px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.hobby-card.active .image-container img {
+    transform: scale(1.03);
+}
+
+/* Overlay text */
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    border-radius: 10px;
+    font-size: 0.95rem;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hobby-card.active .overlay-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.gaming-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+/* Fade in text */
+.hobby-card.active .gaming-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hobby-card.active .game-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hobby-card.active .game-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.hobby-card.active .game-card:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.game-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.game-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Circular icon */
+.game-card img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Game name */
+.game-card span {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* DRAWING PART */
+.drawing-text {
+    margin: 15px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.drawing-image-container:hover {
+    transform: scale(1.02);
+}
+
+/* DRAWING SLIDER */
+
+/* ===== DRAWING SLIDER FIX ===== */
+
+.drawing-slider {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+
+.drawing-track {
+    display: flex;          /* VERY IMPORTANT */
+    flex-direction: row;    /* force row layout */
+    gap: 20px;
+    width: max-content;
+    will-change: transform; /* smoother animation */
+}
+
+.drawing-track img {
+    width: 300px;           /* fixed width */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    flex-shrink: 0;         /* prevents shrinking */
+}
+
+.drawing-slider:hover .drawing-track {
+    animation-play-state: paused;
+}
+
+
+.image-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+}
+
+.image-preview.active {
+    display: flex;
+}
+
+.image-preview img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    user-select: none;
+    z-index: 9999;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.image-preview::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/*certificate section*/
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Certificate track */
+.certificate-track {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+
+    overflow-x: auto;
+    /* horizontal scrolling */
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    /* important: let cards start from left for scroll */
+}
+
+/* Optional: hide default scrollbar nicely */
+.certificate-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.certificate-track::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* Centering trick for desktop */
+@media (min-width: 900px) {
+    .certificate-track {
+        justify-content: center;
+        /* only center when enough space to fit all cards */
+        overflow-x: visible;
+        /* no scroll needed on desktop */
+    }
+}
+
+/* Certificate cards */
+.certificate-card {
+    flex: 0 0 auto;
+    width: 250px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+    /* important for glow */
+}
+
+.certificate-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.2);
+    ;
+    /* your RGB glow */
+}
+
+.certificate-card img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* Preview popup */
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+
+.preview.active {
+    display: flex;
+}
+
+.preview img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    transform-origin: center center;
+    transition: transform 0.2s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.preview .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+
+    background: none;
+    /* fully transparent */
+    border: none;
+    /* remove border */
+    padding: 0;
+    /* remove default padding */
+    appearance: none;
+    /* remove native styles */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Position left/right */
+#prevCertBtn {
+    left: 10px;
+}
+
+#nextCertBtn {
+    right: 10px;
+}
+
+/* Optional: hover effect */
+.preview .nav-btn:hover {
+    color: #00f;
+    transform: translateY(-50%) scale(1.3);
+}
+
+/* CONTACT SECTION */
+/* ===== Contact Section ===== */
+.contact-cards {
+    display: flex;
+    justify-content: center;
+    /* center the cards horizontally */
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.2);
+    ;
+    /* RGB glow like your other glass cards */
+}
+
+.contact-card a {
+    color: #1e90ff;
+    /* white text */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+    /* optional hover effect */
+}
+
+.contact-card:hover .percentage {
+    color: #1e90ff;
+    /* glow color, can change */
+    text-shadow:
+        0 0 5px #1e90ff,
+        0 0 10px #1e90ff,
+        0 0 15px #1e90ff,
+        0 0 20px #1e90ff;
+}
+
+.copy-phone {
+    cursor: pointer;
+    color: #1e90ff; /* your choice */
+    transition: color 0.3s ease;
+}
+
+.copy-phone:hover {
+    color: #1e90ff; /* glow effect on hover/tap */
+}
